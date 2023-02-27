@@ -366,3 +366,11 @@ function findMissingLetter(array) {
  * see algos/codewars/human-readable-duration-format.js
  */
 
+
+/**
+ * 13 - 20230227 - parseInt() reloaded
+ * https://www.codewars.com/kata/525c7c5ab6aecef16e0001a5/train/javascript
+ * 
+ * see algos/codewars/parseint-reloaded.js
+ * 
+ */
