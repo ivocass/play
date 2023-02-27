@@ -382,3 +382,19 @@ function findMissingLetter(array) {
  * 
  * see algos/codewars/increment-string.js
  */
+
+
+/**
+ * 15 - 20230227 - Decode the Morse Code
+ * https://www.codewars.com/kata/decode-the-morse-code
+ * 
+ * see algos/codewars/decode-the-morse-code.js
+ */
+
+
+/**
+ * 16 -  - Decode the Morse code, advanced
+ * https://www.codewars.com/kata/54b72c16cd7f5154e9000457/train/javascript
+ * 
+ * see 
+ */
