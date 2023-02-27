@@ -374,3 +374,11 @@ function findMissingLetter(array) {
  * see algos/codewars/parseint-reloaded.js
  * 
  */
+
+
+/**
+ * 14 - 20230227 - String incrementer
+ * https://www.codewars.com/kata/54a91a4883a7de5d7800009c/train/javascript
+ * 
+ * see algos/codewars/increment-string.js
+ */
