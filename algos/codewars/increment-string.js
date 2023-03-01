@@ -54,7 +54,7 @@ assert(incrementString('fo99obar99'), 'fo99obar100');
 
 
 
-// solutions
+// other solutions
 
 
 function incrementString(str) {

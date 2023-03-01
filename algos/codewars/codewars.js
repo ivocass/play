@@ -1,8 +1,17 @@
 
-
+/**
+ * Here I'm saving all the simple Codewars challenges.
+ * The complex ones are saved on their own files and linked here.
+ * I'm adding the solution I submitted and then solutions I liked the most from other devs.
+ */
 
 /**
- * -------------------- 2 - 20230222 - Who likes it? 
+ * 1 - 202302XX
+ * ?
+ */
+
+/**
+ * 2 - 20230222 - Who likes it? 
  * https://www.codewars.com/kata/5266876b8f4bf2da9b000362/train/javascript
  */
 
@@ -25,7 +34,7 @@ function likes(names) {
   }
 }
 
-// solutions
+// other solutions
 
 function likes(names) {
   return {
@@ -67,7 +76,7 @@ function digitalRoot(n) {
   return digitalRoot(total);
 }
 
-// solutions
+// other solutions
 
 function digital_root(n) {
   if (n < 10) return n;
@@ -110,7 +119,7 @@ function longest(s1, s2) {
   return chars.reduce((acc, char) => acc + (acc.includes(char) ? '' : char));
 }
 
-// solutions
+// other solutions
 
 const longest = (s1, s2) => [...new Set(s1+s2)].sort().join('');
 
@@ -134,11 +143,12 @@ function moveZeros(arr) {
   return notZeroes.concat(zeroes);
 }
 
-// solutions
+// other solutions
 
 function moveZeros(arr) {
   return [...arr.filter((val) => val !== 0), ...arr.filter((val) => val === 0)];
 }
+
 
 function moveZeros(arr) {
   return [
@@ -194,7 +204,7 @@ function maxSequence(arr) {
   return sum;
 };
 
-// solutions
+// other solutions
 
 function maxSequence(arr) {
   var currentSum = 0;
@@ -203,6 +213,7 @@ function maxSequence(arr) {
       return Math.max(currentSum, maxSum);
   }, 0);
 }
+
 
 function maxSequence(arr) {
   var min = 0, ans = 0, i, sum = 0;
@@ -213,6 +224,7 @@ function maxSequence(arr) {
   }
   return ans;
 }
+
 
 function maxSequence(arr) {
   var max = 0
@@ -227,6 +239,7 @@ function maxSequence(arr) {
   return max
 }
 
+
 function maxSequence(arr) {
   let sum = 0;
   let max = 0;
@@ -238,6 +251,7 @@ function maxSequence(arr) {
   }
   return max;
 };
+
 
 /**
  * 8 - 20230223 - Are they the "same"?
@@ -263,7 +277,7 @@ function comp(array1, array2) {
   return true;
 }
 
-// solutions
+// other solutions
 
 function comp(array1, array2) {
   if (!array1 || !array2) return false;
@@ -277,6 +291,7 @@ function comp(array1, array2) {
 function comp(a, b) {
   return !!a && !!b && a.map(x => x*x).sort().join() == b.sort().join();
 }
+
 
 /**
  * 9 - 20230223 - Tribonacci Sequence
@@ -304,7 +319,8 @@ function tribonacci(signature, n) {
   return result;
 }
 
-// solutions
+
+// other solutions
 
 function tribonacci(signature,n){  
   for (var i = 0; i < n-3; i++) { // iterate n times
@@ -313,12 +329,14 @@ function tribonacci(signature,n){
   return signature.slice(0, n); //return trib - length of n
 }
 
+
 function tribonacci(signature, n) {
   while(signature.length < n) {
     signature.push(signature.slice(-3).reduce((a, b) => a + b ));
   }
   return signature.slice(0, n);
 }
+
 
 /**
  * 10 - 20230223 - Find the missing letter
@@ -338,7 +356,7 @@ function findMissingLetter(array) {
   return '';
 }
 
-// solutions
+// other solutions
 
 function findMissingLetter(array) {
   let first = array[0].charCodeAt(0)
@@ -396,5 +414,5 @@ function findMissingLetter(array) {
  * 16 -  - Decode the Morse code, advanced
  * https://www.codewars.com/kata/54b72c16cd7f5154e9000457/train/javascript
  * 
- * see 
+ * see algos/codewars/decode-the-morse-code-advanced.js
  */

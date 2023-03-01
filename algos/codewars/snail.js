@@ -1,88 +1,3 @@
-function snailOld(array) {
-  const output = [];
-  let length = array.length ** 2;
-  let addedAmount = 0;
-  let direction = 0;
-  let top = 0;
-  let right = array[0].length - 1;
-  let bottom = array.length - 1;
-  let left = 0;
-  
-  for (let i = 0; i < length; i++) {
-    if (addedAmount === length) {
-      break;
-    }
-
-    let currentArray;
-
-    if (direction === 0) {
-      currentArray = array[top];
-
-      for (let j = 0; j < currentArray.length; j++) {
-        const item = currentArray[j];
-
-        if (item !== undefined) {
-          output.push(item);
-          
-          currentArray[j] = undefined;
-          addedAmount++;
-        }
-      }
-
-      direction++;
-      top++;
-    } else if (direction === 1) {
-      for (let j = 0; j < array.length; j++) {
-        currentArray = array[j];
-        const item = currentArray[right];
-
-        if (item !== undefined) {
-          output.push(item);
-          
-          currentArray[right] = undefined;
-          addedAmount++;
-        }
-      }
-     
-      direction++;
-      right--;
-    } else if (direction === 2) {
-      currentArray = array[bottom];
-
-      for (let j = array.length - 1; j > -1; j--) {
-        const item = currentArray[j];
-
-        if (item !== undefined) {
-          output.push(item);
-          
-          currentArray[j] = undefined;
-          addedAmount++;
-        }
-      }
-
-      direction++;
-      bottom--;
-    } else if (direction === 3) {
-      for (let j = array.length - 1; j > -1; j--) {
-        currentArray = array[j];
-        const item = currentArray[left];
-
-        if (item !== undefined) {
-          output.push(item);
-          
-          currentArray[left] = undefined;
-          addedAmount++;
-        }
-      }
-      direction = 0;
-      left++;
-    }
-  }
-
-
-  return output;
-}
-
 function snail(array) {
   if (array[0].length === 0) return [];
 
@@ -188,7 +103,7 @@ assertDeepEquals(
 );
 
 
-// solutions
+// other solutions
 // https://www.codewars.com/kata/521c2db8ddc89b9b7a0000c1/solutions/javascript
 
 // 1246ms
@@ -386,7 +301,7 @@ snail = function(array) {
 
 
 var snail = function (array) {
-  debugger;
+  
   var answer = [];
   for (var size = array.length, i = 0, j = 0; size > 0; size -= 2, ++j) {
     for (var k = 0; k < size - 1; ++k, ++j) answer.push(array[i][j]);

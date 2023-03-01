@@ -1,3 +1,10 @@
+/**
+ * Improvements:
+ * -the code to get an array with all the sequences of ones (from chatgpt):
+ * const regex = /1+/g;
+ * const arrayOfOnes = str.match(regex);
+ */
+
 const MORSE_CODE = [];
 MORSE_CODE['....'] = 'H';
 MORSE_CODE['.'] = 'E';
@@ -122,13 +129,14 @@ for (let i = 0; i < bits.length; i++) {
 }
 
 
-// solutions
+// other solutions
   
 // misc
 
 /**
- * My original, alternative way of getting the sequences lengths. 
- * More performant but less elegant.
+ * My initial, alternative way of getting the sequences lengths.
+ * Before submitting, I redesigned it and discarded this one.
+ * This is more performant but less elegant.
  */
 function getTimeUnits(bits) {
   
@@ -167,5 +175,5 @@ function getTimeUnits(bits) {
     }
   }
 
-  // etc
+  // etc (I kept the rest of this function in the one I submitted)
 }

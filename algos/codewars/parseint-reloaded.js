@@ -86,7 +86,7 @@ assert(
 
 
 
-// solutions
+// other solutions
 
 function parseInt(string) {
   const conversionTable = {

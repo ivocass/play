@@ -60,7 +60,7 @@ assert(formatDuration(132030240), '4 years, 68 days, 3 hours and 4 minutes');
 assert(formatDuration(5983440), '69 days, 6 hours and 4 minutes');
 
 
-// solutions
+// other solutions
 // https://www.codewars.com/kata/52742f58faf5485cae000b9a/solutions/javascript
 
 const delegates = [

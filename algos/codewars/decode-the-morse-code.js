@@ -2,6 +2,8 @@
  * Improvements:
  * -could have done return morseCode.trim().split...
  * -could have made it easier to understand, like the other solution
+ * 
+ * improvements applied in 'decode-the-morse-code-advanced.js'
  */
 
 const MORSE_CODE = [];
@@ -33,7 +35,7 @@ function assert(output, expected) {
 assert(decodeMorse('.... . -.--   .--- ..- -.. .'), 'HEY JUDE');
 
 
-// solutions
+// other solutions
 
 decodeMorse = function(morseCode){
   function decodeMorseLetter(letter) {
