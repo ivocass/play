@@ -3,6 +3,10 @@
  * -the code to get an array with all the sequences of ones (from chatgpt):
  * const regex = /1+/g;
  * const arrayOfOnes = str.match(regex);
+ * 
+ * -the conditionals at the bottom of getTimeUnits() can be simplified.
+ * -regex to trim zeroes: replace(/^0+|0+$/g, '')
+ * -string.repeat() exists 😂
  */
 
 const MORSE_CODE = [];
@@ -130,7 +134,112 @@ for (let i = 0; i < bits.length; i++) {
 
 
 // other solutions
+
+
+var decodeBits = function(bits){
+  bits = bits.replace(/^0+/, "").replace(/0+$/, "")
   
+  const bitsMatch = bits.match(/(1|0)\1*/g)
+  
+  const transmissionRate = bitsMatch.map(bits => bits.length).sort((a,b) => a-b)[0]
+  const regex = (r, l) => new RegExp(`${r}{${l*transmissionRate}}`, "g")
+  
+  return bits.replace(regex("1", 3), "-")
+    .replace(regex("1", 1), ".").replace(regex("0", 7), "   ")
+    .replace(regex("0", 3), " ").replace(regex("0", 1), "")
+}
+
+var decodeMorse = morseCode => morseCode.split("   ").map(word => word.split(" ").map(char => MORSE_CODE[char]).join("")).join(" ")
+  
+
+function decodeMorse (input) {
+  return input.split('   ')
+    .map(w => w.split(' ').map(l => MORSE_CODE[l]).join(''))
+    .join(' ')
+}
+
+function decodeBits (bits) {
+  const bitSequences = bits.replace(/^0+|0+$/g, '').match(/0+|1+/g)
+  const timeUnitLength = Math.min(...bitSequences.map(b => b.length))
+
+  const vocabulary = {
+    ['0'.repeat(7 * timeUnitLength)]: '   ',
+    ['0'.repeat(3 * timeUnitLength)]: ' ',
+    ['0'.repeat(timeUnitLength)]: '',
+    ['1'.repeat(timeUnitLength)]: '.',
+    ['1'.repeat(3 * timeUnitLength)]: '-'
+  }
+
+  return bitSequences.map(p => vocabulary[p]).join('')
+}
+
+
+const decodeBits = bits => {
+  bits = bits.replace(/(^0+|0+$)/g, '');
+  const rate = Math.min.apply(
+    null,
+    bits.match(/0+|1+/g).map(pace => pace.length),
+  );
+
+  return bits
+    .replace(RegExp('0'.repeat(7 * rate), 'g'), '   ')
+    .replace(RegExp('0'.repeat(3 * rate), 'g'), ' ')
+    .replace(RegExp('1'.repeat(3 * rate), 'g'), '-')
+    .replace(RegExp('1'.repeat(1 * rate), 'g'), '.')
+    .replace(RegExp('0'.repeat(1 * rate), 'g'), '');
+};
+
+const decodeMorse = morseCode =>
+  morseCode.replace(/ ?[.-]+ ?/g, code => MORSE_CODE[code.trim()]).trim();
+
+
+function decodeBits (bits) {
+  let codes = bits
+    .replace(/^0+/, '')
+    .replace(/0+$/, '')
+    .match(/(0+|1+)/g)
+  
+  let counts = codes.map((e) => { return e.length })
+  let min = Math.min(...counts)
+  
+  return codes
+    .map((code) => {
+      switch (code.slice(0, code.length / min)) {
+        case '0'      : return ''
+        case '1'      : return '.'
+        case '111'    : return '-'
+        case '000'    : return ' '
+        case '0000000': return '   '
+      }
+    }).join('')
+}
+
+function decodeMorse (morse) {
+  return morse.replace(/ ?[.-]+ ?/g, (e) => {
+    return MORSE_CODE[e.trim()]
+  }).trim()
+}
+
+
+var decodeBits = function( bits ) {
+  bits = bits.replace( /(^0+|0+$)/g, '' );
+  let timeUnit = Math.min.apply( null, bits.match( /0+|1+/g ).map( item => item.length ) );
+  
+  return bits
+    .replace( new RegExp( '0'.repeat( 7 * timeUnit ), 'g' ), '   ' )
+    .replace( new RegExp( '0'.repeat( 3 * timeUnit ), 'g' ), ' ' )
+    .replace( new RegExp( '1'.repeat( 3 * timeUnit ), 'g' ), '-' )
+    .replace( new RegExp( '1'.repeat( 1 * timeUnit ), 'g' ), '.' )
+    .replace( new RegExp( '0'.repeat( 1 * timeUnit ), 'g' ), '' );
+};
+
+var decodeMorse = function(morseCode){
+    return morseCode.trim().split( '   ' )
+      .reduce( ( res, word ) => res + ' ' + word.split( ' ' ).reduce( ( word, letter ) => word + MORSE_CODE[ letter ], '' ), '' )
+      .trim();
+};
+
+
 // misc
 
 /**

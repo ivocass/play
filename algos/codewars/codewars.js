@@ -411,8 +411,16 @@ function findMissingLetter(array) {
 
 
 /**
- * 16 -  - Decode the Morse code, advanced
+ * 16 - 20230228 - Decode the Morse code, advanced
  * https://www.codewars.com/kata/54b72c16cd7f5154e9000457/train/javascript
  * 
  * see algos/codewars/decode-the-morse-code-advanced.js
+ */
+
+
+/**
+ * 17 - 20230301 - Scramblies
+ * https://www.codewars.com/kata/55c04b4cc56a697bb0000048/train/javascript
+ * 
+ * see algos/codewars/scramblies.js
  */
