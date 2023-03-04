@@ -432,3 +432,11 @@ function findMissingLetter(array) {
  * 
  * algos/codewars/roman-numerals-helper.js
  */
+
+
+/**
+ * 19 - 20230303 - Catching Car Mileage Numbers
+ * https://www.codewars.com/kata/52c4dd683bfd3b434c000292/train/javascript
+ * 
+ * algos/codewars/catching-car-mileage-numbers.js
+ */
