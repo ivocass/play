@@ -440,3 +440,11 @@ function findMissingLetter(array) {
  * 
  * algos/codewars/catching-car-mileage-numbers.js
  */
+
+
+/**
+ * 20 - 20230306 - Sum of Intervals
+ * https://www.codewars.com/kata/52b7ed099cdc285c300001cd/train/javascript
+ * 
+ * algos/codewars/sum-of-intervals.js
+ */
