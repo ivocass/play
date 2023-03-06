@@ -48,10 +48,10 @@ function sumIntervals(intervals) {
   let max = -Number.MAX_VALUE;
   let total = 0;
   
-  for (let [a,b] of sorted) {
-    max = Math.max(m, a);
-    total += Math.max(0, b-max);
-    max = Math.max(m, b);
+  for (let [a, b] of sorted) {
+    max = Math.max(max, a);
+    total += Math.max(0, b - max);
+    max = Math.max(max, b);
   }
   return total;
 }
