@@ -448,3 +448,11 @@ function findMissingLetter(array) {
  * 
  * algos/codewars/sum-of-intervals.js
  */
+
+
+/**
+ * 21 - 20230307 - Validate Sudoku with size `NxN`
+ * https://www.codewars.com/kata/540afbe2dc9f615d5e000425/javascript
+ * 
+ * algos/codewars/validate-sudoku-with-size.js
+ */
