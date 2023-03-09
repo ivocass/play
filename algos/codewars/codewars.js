@@ -456,3 +456,11 @@ function findMissingLetter(array) {
  * 
  * algos/codewars/validate-sudoku-with-size.js
  */
+
+
+/**
+ * 22 - 20230308 - Counting Change Combinations
+ * https://www.codewars.com/kata/541af676b589989aed0009e7/train/javascript
+ * 
+ * algos/codewars/counting-change-combinations.js
+ */
