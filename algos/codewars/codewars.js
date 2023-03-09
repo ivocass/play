@@ -464,3 +464,11 @@ function findMissingLetter(array) {
  * 
  * algos/codewars/counting-change-combinations.js
  */
+
+
+/**
+ * 23 - 20230309 - Magnet particules in boxes 
+ * https://www.codewars.com/kata/56c04261c3fcf33f2d000534/train/javascript
+ * 
+ * algos/codewars/magnet-particules-in-boxes.js
+ */

@@ -41,3 +41,19 @@ function assert(output, expected) {
 // assert(countChange(100, [2, 11, 21]), -1);
 assert(countChange(100, [5, 10, 20]), 36);
 // assert(countChange(100, [4, 10]), -1);
+
+// -----------------
+
+// other solutions
+
+const countChange = (money, coins) => 
+    money === 0 ? 1
+  : money < 0   ? 0
+  : coins.reduce((a,c,i) => a + countChange(money - c, coins.slice(i)), 0)
+
+
+const countChange = (money, coins) => {
+  if (money === 0) return 1;
+  if (money < 0 || coins.length == 0) return 0;
+  return countChange(money - coins[0], coins) + countChange(money, coins.slice(1));
+};
