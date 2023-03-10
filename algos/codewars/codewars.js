@@ -472,3 +472,11 @@ function findMissingLetter(array) {
  * 
  * algos/codewars/magnet-particules-in-boxes.js
  */
+
+
+/**
+ * 24 - 20230309 - Codewars style ranking system
+ * https://www.codewars.com/kata/51fda2d95d6efda45e00004e/train/javascript
+ * 
+ * algos/codewars/codewars-style-ranking-system.js
+ */
