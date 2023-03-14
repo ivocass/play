@@ -488,3 +488,10 @@ function findMissingLetter(array) {
  * 
  * algos/codewars/vigenere-cipher-helper.js
  */
+
+
+/**
+ * 26 - 20230310 - Ten pin bowling
+ * https://www.codewars.com/kata/5531abe4855bcc8d1f00004c/train/javascript
+ * 
+ * algos/codewars/ten-pin-bowling.js
