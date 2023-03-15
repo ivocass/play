@@ -495,3 +495,13 @@ function findMissingLetter(array) {
  * https://www.codewars.com/kata/5531abe4855bcc8d1f00004c/train/javascript
  * 
  * algos/codewars/ten-pin-bowling.js
+ */
+
+
+/**
+ * 27 - 20230314 - Texas Hold'em Hands
+ * https://www.codewars.com/kata/524c74f855025e2495000262/train/javascript
+ * 
+ * algos/codewars/texas-holdem-hands.js
+ */
+ 
