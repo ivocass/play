@@ -1,3 +1,8 @@
+/**
+ * Improvements:
+ * -i should've used radial distance. like one of the other solutions.
+ */
+
 function closestPair(points) {
   const len = points.length;
   const sortedX = [...points.sort((a, b) => a[0] - b[0])];
@@ -60,3 +65,26 @@ let grid = [
 const res = closestPair(grid);
 
 console.log('res ', res);
+
+
+// -----------------------------
+
+// other solutions
+
+function closestPair(points) {
+  var minDis = Infinity;
+  points = points.map(x => [x[0],x[1],Math.sqrt(x[0]**2 + x[1]**2)])
+  points.sort((a, b) => a[2] - b[2])
+  for (i = 0; i < points.length-1; i++){
+    for(j = i+1; j < points.length; j++){
+      dis = Math.sqrt((points[i][0] - points[j][0]) **2 + (points[i][1] - points[j][1]) **2)
+      radialDis = Math.sqrt((points[j][2] - points[i][2])**2)
+      if (dis < minDis){
+        minDis = dis;
+        ans = [points[i].slice(0,2),points[j].slice(0,2)];
+      }
+      if (radialDis > minDis) break
+    }
+  }
+  return ans
+}
