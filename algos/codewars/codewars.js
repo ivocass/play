@@ -505,3 +505,10 @@ function findMissingLetter(array) {
  * algos/codewars/texas-holdem-hands.js
  */
  
+
+/**
+ * 28 - 20230324 - Closest pair of points in linearithmic time
+ * https://www.codewars.com/kata/5376b901424ed4f8c20002b7/train/javascript
+ * 
+ * see algos/codewars/closest-pair-of-points.js
+ */
