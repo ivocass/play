@@ -512,3 +512,11 @@ function findMissingLetter(array) {
  * 
  * see algos/codewars/closest-pair-of-points.js
  */
+
+
+/**
+ * 29 - 20230327 - Sudoku solver
+ * https://www.codewars.com/kata/5296bc77afba8baa690002d7/train/javascript
+ * 
+ * see algos/codewars/sudoku-solver.js
+ */
