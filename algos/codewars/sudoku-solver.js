@@ -1,6 +1,9 @@
 /**
  * Improvements:
  * -some parts are probably hardcoded to work only on a 9x9 grid
+ * -one-liner deep clone array: puzzle.slice().map( (a) => a.slice());
+ * -'cell' is a better name than 'slot'
+ * -this is a simpler way to get the block index: 3 * Math.floor(row/3) + Math.floor(col/3)
  */
 
 class SudokuSolver {
@@ -162,3 +165,51 @@ console.log('result', result);
 [9,6,1,5,3,7,2,8,4],
 [2,8,7,4,1,9,6,3,5],
 [3,4,5,2,8,6,1,7,9]] */
+
+
+// other solutions
+
+function sudoku(puzzle) {
+  let unsolved = [];
+  let blocks = new Array(9).fill(0).map(_ => new Set);
+  let rows = new Array(9).fill(0).map(_ => new Set);
+  let cols = new Array(9).fill(0).map(_ => new Set);
+  
+  for (let y = 0; y < 9; y++) {
+    for(let x = 0; x < 9; x++) {
+      let v = puzzle[y][x];
+      if (v === 0)
+        unsolved.push({y, x});
+      else {
+        blocks[3 * Math.floor(y/3) + Math.floor(x/3)].add(v);
+        rows[y].add(v);
+        cols[x].add(v);
+      }
+    }
+  }
+  
+  while(unsolved.length > 0) {
+    unsolved = unsolved.filter(cell => {
+      let set = new Set([1,2,3,4,5,6,7,8,9]);
+      let known = new Set([
+        ...blocks[3 * Math.floor(cell.y/3) + Math.floor(cell.x/3)],
+        ...rows[cell.y],
+        ...cols[cell.x]]);
+      known.forEach(v => set.delete(v));
+      
+      if (set.size === 1) {
+        let v = [...set][0];
+        rows[cell.y].add(v);
+        cols[cell.x].add(v);
+        blocks[3 * Math.floor(cell.y/3) + Math.floor(cell.x/3)].add(v);
+        puzzle[cell.y][cell.x] = v;
+        
+        return false;
+      }
+      
+      return true;
+    });
+  }
+  
+  return puzzle;
+}
