@@ -510,7 +510,7 @@ function findMissingLetter(array) {
  * 28 - 20230324 - Closest pair of points in linearithmic time
  * https://www.codewars.com/kata/5376b901424ed4f8c20002b7/train/javascript
  * 
- * see algos/codewars/closest-pair-of-points.js
+ * algos/codewars/closest-pair-of-points.js
  */
 
 
@@ -518,7 +518,7 @@ function findMissingLetter(array) {
  * 29 - 20230327 - Sudoku solver
  * https://www.codewars.com/kata/5296bc77afba8baa690002d7/train/javascript
  * 
- * see algos/codewars/sudoku-solver.js
+ * algos/codewars/sudoku-solver.js
  */
 
 
@@ -526,5 +526,13 @@ function findMissingLetter(array) {
  * 30 - 20230329 - Evaluate mathematical expression
  * https://www.codewars.com/kata/52a78825cdfc2cfc87000005/train/javascript
  * 
- * see algos/codewars/evaluate-mathematical-expression.js
+ * algos/codewars/evaluate-mathematical-expression.js
+ */
+
+
+/**
+ * 31 - 20230329 - Battleship field validator
+ * https://www.codewars.com/kata/52bb6539a4cf1b12d90005b7/train/javascript
+ * 
+ * algos/codewars/battleship-field-validator.js
  */
