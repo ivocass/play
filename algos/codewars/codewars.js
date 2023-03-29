@@ -520,3 +520,11 @@ function findMissingLetter(array) {
  * 
  * see algos/codewars/sudoku-solver.js
  */
+
+
+/**
+ * 30 - 20230329 - Evaluate mathematical expression
+ * https://www.codewars.com/kata/52a78825cdfc2cfc87000005/train/javascript
+ * 
+ * see algos/codewars/evaluate-mathematical-expression.js
+ */
