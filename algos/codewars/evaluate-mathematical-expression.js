@@ -1,3 +1,9 @@
+/**
+ * Improvements:
+ * -a better name for 'parenthesesDepth' could be 'nesting'
+ * -this returns an array with tokens: expression.match(/([0-9.]+|[-+*()])/g)
+ */
+
 const calc = function (expression) {
   // match operators and parentheses
   const regexNaN = /[+\-*/()]/;
@@ -143,4 +149,131 @@ const tests = [
 
 for (const [input, expected] of tests) {
   assert(calc(input), expected);
+}
+
+
+// other solutions
+
+function calc(expression) {
+  let tokens = expression.match(/([0-9.]+|[-+*/()])/g);
+  
+  function expr() {
+    let result = term();
+    while (true) {
+      let token = tokens.shift();
+      if (token == '+') {
+          result += term();
+      } else if (token == '-') {
+          result -= term();
+      } else {
+          tokens.unshift(token);
+          return result;
+      }
+    }
+  }
+  
+  function term() {
+    let result = factor();
+    while (true) {
+      let token = tokens.shift();
+      if (token == '*') {
+          result *= factor();
+      } else if (token == '/') {
+          result /= factor();
+      } else {
+          tokens.unshift(token);
+          return result;
+      }
+    }
+  }
+  
+  function factor() {
+    let token = tokens.shift();
+    if (token == '-') return -factor();
+    if (token == '(') {
+        let result = expr();
+        tokens.shift();
+        return result;
+    }
+    return +token;
+  }
+  
+  return expr();
+}
+
+
+
+/**
+ * By ChatGPT 3.5 (Shunting Yard algorithm)
+ * "Note that the tokenize(), isNumber(), isOperator(), precedence(), and associativity() 
+ * functions are not included in this code snippet, so you'll need to implement them separately."
+ */
+function calculate(expression) {
+  // Step 1: Convert the input string into tokens
+  const tokens = tokenize(expression);
+
+  // Step 2: Initialize two stacks
+  const operatorStack = [];
+  const outputStack = [];
+
+  // Step 3: Process each token
+  for (const token of tokens) {
+      if (isNumber(token)) {
+          // If the token is a number, push it onto the output stack
+          outputStack.push(parseFloat(token));
+      } else if (isOperator(token)) {
+          // If the token is an operator
+          while (operatorStack.length > 0 &&
+                 isOperator(operatorStack[operatorStack.length - 1]) &&
+                 precedence(token) <= precedence(operatorStack[operatorStack.length - 1])) {
+              // Pop operators from the operator stack and push them onto the output stack
+              outputStack.push(operatorStack.pop());
+          }
+          // Push the current operator onto the operator stack
+          operatorStack.push(token);
+      } else if (token === "(") {
+          // If the token is a left parenthesis, push it onto the operator stack
+          operatorStack.push(token);
+      } else if (token === ")") {
+          // If the token is a right parenthesis
+          while (operatorStack[operatorStack.length - 1] !== "(") {
+              // Pop operators from the operator stack and push them onto the output stack
+              outputStack.push(operatorStack.pop());
+          }
+          // Pop the left parenthesis from the operator stack and discard it
+          operatorStack.pop();
+      }
+  }
+
+  // Step 4: Pop any remaining operators from the operator stack and push them onto the output stack
+  while (operatorStack.length > 0) {
+      outputStack.push(operatorStack.pop());
+  }
+
+  // Step 5: Evaluate the expression using the postfix notation represented by the output stack
+  const operandStack = [];
+  for (const token of outputStack) {
+      if (isOperator(token)) {
+          // If the token is an operator, pop the last two operands from the operand stack and apply the operator to them
+          const op2 = operandStack.pop();
+          const op1 = operandStack.pop();
+          let result;
+          if (token === "+") {
+              result = op1 + op2;
+          } else if (token === "-") {
+              result = op1 - op2;
+          } else if (token === "*") {
+              result = op1 * op2;
+          } else if (token === "/") {
+              result = op1 / op2;
+          }
+          operandStack.push(result);
+      } else {
+          // If the token is a number, push it onto the operand stack
+          operandStack.push(token);
+      }
+  }
+
+  // The result is the only item left on the operand stack
+  return operandStack[0];
 }
