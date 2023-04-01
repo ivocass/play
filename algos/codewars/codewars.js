@@ -536,3 +536,11 @@ function findMissingLetter(array) {
  * 
  * algos/codewars/battleship-field-validator.js
  */
+
+
+/**
+ * 32 - 20230330 - Integer square root
+ * https://www.codewars.com/kata/58a3fa665973c2a6e80000c4/train/javascript
+ * 
+ * algos/codewars/integer-square-root.js
+ */
