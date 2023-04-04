@@ -1,3 +1,8 @@
+/**
+ * Improvements:
+ * -in "if (isNaN(aN)) aN = 0;", I should've done a.padStart(b.length - a.length, '0')
+ */
+
 const multiply = (a, b) => {
   let carry = 0;
   let emptyCount = 0;
