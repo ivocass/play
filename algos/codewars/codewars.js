@@ -544,3 +544,11 @@ function findMissingLetter(array) {
  * 
  * algos/codewars/integer-square-root.js
  */
+
+
+/**
+ * 33 - 20230406 - Ins and Outs
+ * https://www.codewars.com/kata/576bbb41b1abc47b3900015e/javascript
+ * 
+ * algos/codewars/ins-and-outs.js
+ */
