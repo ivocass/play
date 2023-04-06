@@ -111,6 +111,30 @@ const compressItem = (matrix, x, y) => {
   return true;
 };
 
+const compressItems = (matrix, items) => {
+  const prevLength = items.length;
+
+  while (items.length > 0) {
+    let successCount = 0;
+
+    for (let i = items.length - 1; i > -1; i--) {
+      const item = items[i];
+      const success = compressItem(matrix, item.x, item.y);
+
+      if (success) {
+        successCount++;
+        items.splice(i, 1);
+      }
+    }
+
+    if (successCount === 0) {
+      break;
+    }
+  }
+
+  return prevLength - items.length;
+};
+
 const compress = (matrix, w, h) => {
   const oItems = [];
   const eItems = [];
@@ -120,29 +144,23 @@ const compress = (matrix, w, h) => {
     else if (item === 'E') eItems.push({ x, y });
   });
 
-  let compressingOs = true;
-  let isFinished = false;
-  while (!isFinished) {
-    if (compressingOs) {
-      while (oItems.length > 0) {
-        let successCount = 0;
-        for (let i = oItems.length - 1; i > -1; i--) {
-          const oItem = oItems[i];
-          const success = compressItem(matrix, oItem.x, oItem.y);
+  let oSuccess = -1;
+  let eSuccess = -1;
+  while (true) {
+    oSuccess = compressItems(matrix, oItems);
+    eSuccess = compressItems(matrix, eItems);
 
-          if (success) {
-            successCount++;
-            oItems.splice(i, 1);
-          }
-        }
+    // if no progress was made
+    if (oSuccess === 0 && eSuccess === 0) {
+      break;
+    }
 
-        if (successCount === 0) {
-          break;
-        }
-      }
-      isFinished = true;
+    if (oItems.length === 0) {
+      break;
     }
   }
+
+  return oItems.length === 0;
 };
 
 const validate = (matrix, startingX, startingY) => {
@@ -266,12 +284,15 @@ function insAndOuts(gamemap) {
 
   surround(matrix, w, h);
 
-  compress(matrix, w, h, flatMatrix);
-  console.log('matrix', matrix);
-  return null;
+  const compressionResult = compress(matrix, w, h, flatMatrix);
+  // console.log('matrix', matrix);
+  if (!compressionResult) {
+    // console.log('COMPRESSION FAILED');
+    return '';
+  }
 
   if (!validate(matrix, startingX, startingY)) {
-    console.log('VALIDATION FALSE');
+    // console.log('VALIDATION FALSE');
     return '';
   }
 
@@ -509,34 +530,32 @@ let randomMap18Solution =
   '..... .......\n.I I.O.I I I.\n.   . ...   .\n.I I.O O.I I.\n.   ... . ...\n.I I I.E.I.O \n.     ... ...\n.I I I I I I.\n.           .\n.I I I I I I.\n.       .....\n.E I I I.E E \n. ...   .....\n.I.O.I I I I.\n... .........';
 
 let answer;
-// answer = insAndOuts(map0);
-// assert(answer, sol0);
-
-// answer = insAndOuts(map1);
-// assert(answer, sol1);
-
-// answer = insAndOuts(map2);
-// assert(answer, sol2);
-
 answer = insAndOuts(map0);
-// assert(answer, randomMap18Solution);
+assert(answer, sol0);
 
-// console.log('answer', answer);
+answer = insAndOuts(map1);
+assert(answer, sol1);
 
-// answer = insAndOuts(map4);
-// assert(answer, sol4);
+answer = insAndOuts(map2);
+assert(answer, sol2);
 
-// answer = insAndOuts(map5);
-// assert(answer, sol5);
+answer = insAndOuts(map3);
+assert(answer, sol3);
 
-// answer = insAndOuts(map6);
-// assert(answer, sol6);
+answer = insAndOuts(map4);
+assert(answer, sol4);
 
-// answer = insAndOuts(map7);
-// assert(answer, sol7);
+answer = insAndOuts(map5);
+assert(answer, sol5);
 
-// answer = insAndOuts(map8);
-// assert(answer, sol8);
+answer = insAndOuts(map6);
+assert(answer, sol6);
 
-// answer = insAndOuts(map9);
-// assert(answer, sol9);
+answer = insAndOuts(map7);
+assert(answer, sol7);
+
+answer = insAndOuts(map8);
+assert(answer, sol8);
+
+answer = insAndOuts(map9);
+assert(answer, sol9);
