@@ -604,3 +604,172 @@ assert(answer, example11Solution);
 
 // answer = insAndOuts(map9);
 // assert(answer, sol9);
+
+
+// --------------------------
+
+// other solutions:
+
+/**
+ * This one is clean, though not very efficient:
+ * -It creates lots of variants (altered copies of the original matrix) by analyzing
+ * the original matrix, and every time it finds an E, it modifies all the previous variants
+ * to replace that E with an I and adds an additional variant where it replaces an I with
+ * an O.
+ * -It then draws a border around all the Is.
+ * -For example11 it created 512 variants.
+ * -Then it checks if they're valid by counting the dots not belonging to a loop.
+ * -For example11 it reduced the 512 variants to 114 valid solutions.
+ * -Finally, it uses the solution that has the least amount of Is.
+ */
+function insAndOuts(gamemap) {
+  debugger;
+  const arr = str2arr(gamemap);
+  const solver = new InsAndOutsSolver();
+  const variants = solver.getVariants(arr);
+  let solutions = variants.map(solver.drawPath);
+  solutions = solutions.filter((sol) => solver.isValid(sol));
+  const solution = solver.findBest(solutions);
+  return solution ? arr2str(solver.copyPath(solution, arr)) : '';
+}
+
+const str2arr = (str) => str.split('\n').map((row) => row.split(''));
+const arr2str = (arr) => arr.map((row) => row.join('')).join('\n');
+const getCopy = (arr) => arr.map((row) => row.slice());
+
+class InsAndOutsSolver {
+  getVariants(arr) {
+    const variants = [getCopy(arr)];
+    for (let x = 0; x < arr.length; x++) {
+      for (let y = 0; y < arr[x].length; y++) {
+        if (arr[x][y] == 'E') {
+          variants.forEach((variant) => {
+            variant[x][y] = 'I';
+            const alt = getCopy(variant);
+            alt[x][y] = 'O';
+            variants.push(alt);
+          });
+        }
+      }
+    }
+    return variants;
+  }
+  drawPath(arr) {
+    const res = getCopy(arr);
+    for (let x = 1; x < arr.length; x += 2) {
+      for (let y = 1; y < arr[x].length; y += 2) {
+        const d = new Drawer(res, x, y);
+        if (arr[x][y] == 'I') {
+          d.drawBorder();
+          d.seperateFrom('O');
+        }
+      }
+    }
+    return res;
+  }
+  isValid(arr) {
+    const erased = this.erasePath(arr);
+    return this.getCount(erased, '.') == 0;
+  }
+  erasePath(arr) {
+    const res = getCopy(arr);
+    let point = this.findFirst(res, '.');
+    while (point) {
+      res[point.x][point.y] = ' ';
+      const view = new MapView(res, point.x, point.y);
+      point = view.findNearBy('.');
+    }
+    return res;
+  }
+  findFirst(arr, item) {
+    for (let x = 0; x < arr.length; x++) {
+      for (let y = 0; y < arr[x].length; y++) {
+        if (arr[x][y] == item) return { x, y };
+      }
+    }
+  }
+  findBest(solutions) {
+    return solutions.length
+      ? solutions.reduce((best, sol) =>
+          this.getCount(sol, 'I') < this.getCount(best, 'I') ? sol : best
+        )
+      : null;
+  }
+  getCount(arr, item) {
+    let count = 0;
+    for (let x = 0; x < arr.length; x++)
+      for (let y = 0; y < arr[x].length; y++) if (arr[x][y] == item) count++;
+    return count;
+  }
+  copyPath(from, to) {
+    const res = getCopy(to);
+    for (let x = 0; x < res.length; x++)
+      for (let y = 0; y < res[x].length; y++)
+        if (from[x][y] == '.') res[x][y] = from[x][y];
+    return res;
+  }
+}
+
+class MapView {
+  constructor(arr, x, y) {
+    this.arr = arr;
+    this.x = x;
+    this.y = y;
+    this.row = arr[x];
+  }
+  hasAt(dx, dy, item) {
+    const x = this.x + dx,
+      y = this.y + dy;
+    return (
+      x >= 0 &&
+      x < this.arr.length &&
+      y >= 0 &&
+      y < this.row.length &&
+      this.arr[x][y] == item
+    );
+  }
+  findNearBy(item) {
+    if (this.hasAt(-1, 0, item)) return { x: this.x - 1, y: this.y };
+    if (this.hasAt(0, 1, item)) return { x: this.x, y: this.y + 1 };
+    if (this.hasAt(1, 0, item)) return { x: this.x + 1, y: this.y };
+    if (this.hasAt(0, -1, item)) return { x: this.x, y: this.y - 1 };
+  }
+}
+
+class Drawer extends MapView {
+  drawBorder() {
+    if (this.x == 1) this.drawUp();
+    if (this.x == this.arr.length - 2) this.drawDown();
+    if (this.y == 1) this.drawLeft();
+    if (this.y == this.row.length - 2) this.drawRight();
+  }
+  seperateFrom(item) {
+    if (this.hasAt(-2, 0, item)) this.drawUp();
+    if (this.hasAt(+2, 0, item)) this.drawDown();
+    if (this.hasAt(0, -2, item)) this.drawLeft();
+    if (this.hasAt(0, +2, item)) this.drawRight();
+  }
+  drawUp() {
+    this.drawAt(-1, -1, '.');
+    this.drawAt(-1, 0, '.');
+    this.drawAt(-1, 1, '.');
+  }
+  drawDown() {
+    this.drawAt(1, -1, '.');
+    this.drawAt(1, 0, '.');
+    this.drawAt(1, 1, '.');
+  }
+  drawLeft() {
+    this.drawAt(-1, -1, '.');
+    this.drawAt(0, -1, '.');
+    this.drawAt(1, -1, '.');
+  }
+  drawRight() {
+    this.drawAt(-1, 1, '.');
+    this.drawAt(0, 1, '.');
+    this.drawAt(1, 1, '.');
+  }
+  drawAt(dx, dy, item) {
+    this.arr[this.x + dx][this.y + dy] = item;
+  }
+}
