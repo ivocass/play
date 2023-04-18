@@ -552,3 +552,11 @@ function findMissingLetter(array) {
  * 
  * algos/codewars/ins-and-outs.js
  */
+
+
+/**
+ * 34 - 20230418 - Simpler interactive interpreter
+ * https://www.codewars.com/kata/53005a7b26d12be55c000243/train/javascript
+ * 
+ * algos/codewars/simpler-interactive-interpreter.js
+ */
