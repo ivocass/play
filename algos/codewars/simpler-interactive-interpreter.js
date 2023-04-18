@@ -157,3 +157,64 @@ const interpreter = new Interpreter();
 
 assert(interpreter.input('(4 + 2) * 3'), -1);
 // assert.throws(() => interpreter.input('y'));
+
+
+// other solutions:
+
+function Interpreter()
+{
+    this.vars = {};
+    this.functions = {};
+}
+
+Interpreter.prototype.tokenize = function (program)
+{
+    if (program === "")
+        return [];
+
+    var regex = /\s*([-+*\/\%=\(\)]|[A-Za-z_][A-Za-z0-9_]*|[0-9]*\.?[0-9]+)\s*/g;
+    return program.split(regex).filter(function (s) { return !s.match(/^\s*$/); });
+};
+const user = {}
+Interpreter.prototype.input = function (expr)
+{
+    if(expr.includes('(')){
+      let a = expr.lastIndexOf('('), b = expr.slice(a+1), c = b.indexOf(')')
+      let interpreter = new Interpreter()
+      return interpreter.input(expr.slice(0,a)+interpreter.input(b.slice(0,c))+b.slice(c+1))
+    }
+
+    if(!expr) return ''
+    const v = x => +isNaN(x) ? user[x] : +x
+    const f = {
+      '*':(a,b)=>v(a) * v(b),
+      '/':(a,b)=>v(a) / v(b),
+      '%':(a,b)=>v(a) % v(b),
+      '+':(a,b)=>v(a) + v(b),
+      '-':(a,b)=>v(a) - v(b),
+      '=':((a,b)=>user[a]=isNaN(+b)?user[b]:+b)
+    }
+    var tokens = this.tokenize(expr);
+    
+    for (let x of '*/%,+-,='.split(',')){
+      let redo = true
+      while(redo) {
+        redo=false
+        l:for (let t of tokens)
+          for (let op of x)
+            if (t === op) {
+              let i = tokens.indexOf(op)
+              tokens = [...tokens.slice(0,i-1), f[op](tokens[i-1],tokens[i+1]), ...tokens.slice(i+2)]
+              redo=true
+              break l
+            }
+      }
+    }
+        
+        
+    console.log(tokens)
+    if (tokens.length === 1) {
+      if (!user[tokens[0]] && isNaN(+tokens[0])) throw 'error'
+      return isNaN(+tokens[0]) ? user[tokens[0]] : tokens[0]
+    }
+};
