@@ -12,7 +12,7 @@ var twoSum = function (nums, target) {
   }
 };
 
-// other solutions
+// other solutions -----------------------------------------------------------------------
 
 // Approach 1: Brute Force
 var twoSum = function (nums, target) {
