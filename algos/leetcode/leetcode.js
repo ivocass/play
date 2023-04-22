@@ -39,3 +39,10 @@
  *
  * algos/leetcode/valid-parentheses.js
  */
+
+/**
+ * 7 - 20230421 - Merge two sorted lists - Easy
+ * https://leetcode.com/problems/merge-two-sorted-lists/solutions/?orderBy=most_votes&languageTags=javascript
+ *
+ * algos/leetcode/merge-two-sorted-lists.js
+ */
