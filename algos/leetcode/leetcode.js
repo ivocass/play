@@ -1,6 +1,6 @@
 /**
  * 1 - 20230420 - Middle of the linked list - Easy
- * https://leetcode.com/problems/middle-of-the-linked-list/submissions/937027031/
+ * https://leetcode.com/problems/middle-of-the-linked-list/solutions
  *
  * algos/leetcode/middle-of-the-linked-list.js
  */
@@ -66,4 +66,11 @@
  * https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/solutions/?orderBy=most_votes&languageTags=javascript
  *
  * algos/leetcode/find-the-index-of.js
+ */
+
+/**
+ * 11 - 20230424 - Search insert position - Easy
+ * https://leetcode.com/problems/search-insert-position/solutions/?orderBy=most_votes
+ *
+ * algos/leetcode/search-insert-position.js
  */
