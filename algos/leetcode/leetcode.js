@@ -60,3 +60,10 @@
  *
  * algos/leetcode/remove-element.js
  */
+
+/**
+ * 10 - 20230424 - Find the index of the first occurence in a string - Easy
+ * https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/solutions/?orderBy=most_votes&languageTags=javascript
+ *
+ * algos/leetcode/find-the-index-of.js
+ */
