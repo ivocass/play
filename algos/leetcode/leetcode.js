@@ -48,8 +48,15 @@
  */
 
 /**
- * 8 - 20230424 - Remove duplicates from sorted array
+ * 8 - 20230424 - Remove duplicates from sorted array - Easy
  * https://leetcode.com/problems/remove-duplicates-from-sorted-array/solutions/?orderBy=most_votes&languageTags=javascript
  *
  * algos/leetcode/remove-duplicates-from-sorted-array.js
+ */
+
+/**
+ * 9 - 20230424 - Remove element - Easy
+ * https://leetcode.com/problems/remove-element/solutions/?orderBy=most_votes&languageTags=javascript
+ *
+ * algos/leetcode/remove-element.js
  */
