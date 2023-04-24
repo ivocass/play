@@ -74,3 +74,17 @@
  *
  * algos/leetcode/search-insert-position.js
  */
+
+/**
+ * 12 - 20230424 - Length of last word - Easy
+ * https://leetcode.com/problems/length-of-last-word/solutions/?orderBy=most_votes&languageTags=javascript
+ *
+ * algos/leetcode/length-of-last-word.js
+ */
+
+/**
+ * 13 - 20230424 - Plus one - Easy
+ * https://leetcode.com/problems/plus-one/solutions/?orderBy=most_votes&languageTags=javascript
+ *
+ * algos/leetcode/plus-one.js
+ */
