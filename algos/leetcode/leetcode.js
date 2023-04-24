@@ -46,3 +46,10 @@
  *
  * algos/leetcode/merge-two-sorted-lists.js
  */
+
+/**
+ * 8 - 20230424 - Remove duplicates from sorted array
+ * https://leetcode.com/problems/remove-duplicates-from-sorted-array/solutions/?orderBy=most_votes&languageTags=javascript
+ *
+ * algos/leetcode/remove-duplicates-from-sorted-array.js
+ */
