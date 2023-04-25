@@ -109,3 +109,10 @@
  *
  * algos/leetcode/climbing-stairs.js
  */
+
+/**
+ * 17 - 20230425 - Remove duplicates from sorted list - Easy
+ * https://leetcode.com/problems/remove-duplicates-from-sorted-list/solutions/?orderBy=most_votes&languageTags=javascript
+ *
+ * algos/leetcode/remove-duplicates-from-sorted-list.js
+ */
