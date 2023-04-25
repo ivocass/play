@@ -88,3 +88,10 @@
  *
  * algos/leetcode/plus-one.js
  */
+
+/**
+ * 14 - 20230424 - Add binary - Easy
+ * https://leetcode.com/problems/add-binary/solutions/?orderBy=most_votes&languageTags=javascript
+ *
+ * algos/leetcode/add-binary.js
+ */
