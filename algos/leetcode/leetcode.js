@@ -102,3 +102,10 @@
  *
  * algos/leetcode/sqrt-x.js
  */
+
+/**
+ * 16 - 20230425 - Climbing stairs - Easy
+ * https://leetcode.com/problems/climbing-stairs/solutions/?orderBy=most_votes&languageTags=javascript
+ *
+ * algos/leetcode/climbing-stairs.js
+ */
