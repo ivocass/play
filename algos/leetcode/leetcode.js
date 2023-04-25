@@ -95,3 +95,10 @@
  *
  * algos/leetcode/add-binary.js
  */
+
+/**
+ * 15 - 20230425 - Sqrt(x) - Easy
+ * https://leetcode.com/problems/sqrtx/solutions/?orderBy=most_votes&languageTags=javascript
+ *
+ * algos/leetcode/sqrt-x.js
+ */
