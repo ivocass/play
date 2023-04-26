@@ -116,3 +116,10 @@
  *
  * algos/leetcode/remove-duplicates-from-sorted-list.js
  */
+
+/**
+ * 18 - 20230425 - Merge sorted array - Easy
+ * https://leetcode.com/problems/merge-sorted-array/solutions/?orderBy=most_votes
+ *
+ *
+ */
