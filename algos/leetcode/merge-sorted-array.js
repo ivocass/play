@@ -106,4 +106,6 @@ var merge = function (nums1, m, nums2, n) {
   while (idx2 >= 0) {
     nums1[idx3--] = nums1[idx1] > nums2[idx2] ? nums1[idx1--] : nums2[idx2--];
   }
+
+  return nums1;
 };
