@@ -130,3 +130,10 @@
  *
  * algos/leetcode/binary-tree-inorder-traversal.js
  */
+
+/**
+ * 20 - 20230427 - Same tree - Easy
+ * https://leetcode.com/problems/same-tree/solutions/?orderBy=most_votes&languageTags=javascript
+ *
+ * algos/leetcode/same-tree.js
+ */
