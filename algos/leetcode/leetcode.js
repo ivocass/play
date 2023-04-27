@@ -21,7 +21,7 @@
 
 /**
  * 4 - 20230420 - Roman to integer - Easy
- * https://leetcode.com/problems/roman-to-integer/solutions/?orderBy=most_votes&languageTags=javascript
+ * https://leetcode.com/problems/roman-to-integer
  *
  * algos/leetcode/roman-to-integer.js
  */
@@ -42,28 +42,28 @@
 
 /**
  * 7 - 20230421 - Merge two sorted lists - Easy
- * https://leetcode.com/problems/merge-two-sorted-lists/solutions/?orderBy=most_votes&languageTags=javascript
+ * https://leetcode.com/problems/merge-two-sorted-lists
  *
  * algos/leetcode/merge-two-sorted-lists.js
  */
 
 /**
  * 8 - 20230424 - Remove duplicates from sorted array - Easy
- * https://leetcode.com/problems/remove-duplicates-from-sorted-array/solutions/?orderBy=most_votes&languageTags=javascript
+ * https://leetcode.com/problems/remove-duplicates-from-sorted-array
  *
  * algos/leetcode/remove-duplicates-from-sorted-array.js
  */
 
 /**
  * 9 - 20230424 - Remove element - Easy
- * https://leetcode.com/problems/remove-element/solutions/?orderBy=most_votes&languageTags=javascript
+ * https://leetcode.com/problems/remove-element
  *
  * algos/leetcode/remove-element.js
  */
 
 /**
  * 10 - 20230424 - Find the index of the first occurence in a string - Easy
- * https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/solutions/?orderBy=most_votes&languageTags=javascript
+ * https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string
  *
  * algos/leetcode/find-the-index-of.js
  */
@@ -77,49 +77,49 @@
 
 /**
  * 12 - 20230424 - Length of last word - Easy
- * https://leetcode.com/problems/length-of-last-word/solutions/?orderBy=most_votes&languageTags=javascript
+ * https://leetcode.com/problems/length-of-last-word
  *
  * algos/leetcode/length-of-last-word.js
  */
 
 /**
  * 13 - 20230424 - Plus one - Easy
- * https://leetcode.com/problems/plus-one/solutions/?orderBy=most_votes&languageTags=javascript
+ * https://leetcode.com/problems/plus-one
  *
  * algos/leetcode/plus-one.js
  */
 
 /**
  * 14 - 20230424 - Add binary - Easy
- * https://leetcode.com/problems/add-binary/solutions/?orderBy=most_votes&languageTags=javascript
+ * https://leetcode.com/problems/add-binary
  *
  * algos/leetcode/add-binary.js
  */
 
 /**
  * 15 - 20230425 - Sqrt(x) - Easy
- * https://leetcode.com/problems/sqrtx/solutions/?orderBy=most_votes&languageTags=javascript
+ * https://leetcode.com/problems/sqrtx
  *
  * algos/leetcode/sqrt-x.js
  */
 
 /**
  * 16 - 20230425 - Climbing stairs - Easy
- * https://leetcode.com/problems/climbing-stairs/solutions/?orderBy=most_votes&languageTags=javascript
+ * https://leetcode.com/problems/climbing-stairs
  *
  * algos/leetcode/climbing-stairs.js
  */
 
 /**
  * 17 - 20230425 - Remove duplicates from sorted list - Easy
- * https://leetcode.com/problems/remove-duplicates-from-sorted-list/solutions/?orderBy=most_votes&languageTags=javascript
+ * https://leetcode.com/problems/remove-duplicates-from-sorted-list
  *
  * algos/leetcode/remove-duplicates-from-sorted-list.js
  */
 
 /**
  * 18 - 20230425 - Merge sorted array - Easy
- * https://leetcode.com/problems/merge-sorted-array/solutions/?orderBy=most_votes
+ * https://leetcode.com/problems/merge-sorted-array
  *
  *algos/leetcode/merge-sorted-array.js
  */
@@ -133,7 +133,14 @@
 
 /**
  * 20 - 20230427 - Same tree - Easy
- * https://leetcode.com/problems/same-tree/solutions/?orderBy=most_votes&languageTags=javascript
+ * https://leetcode.com/problems/same-tree
  *
  * algos/leetcode/same-tree.js
+ */
+
+/**
+ * 21 - 20230427 - Symmetric tree - Easy
+ * https://leetcode.com/problems/symmetric-tree
+ *
+ * algos/leetcode/symmetric-tree.js
  */
