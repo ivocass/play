@@ -144,3 +144,10 @@
  *
  * algos/leetcode/symmetric-tree.js
  */
+
+/**
+ * 22- 20230428 - Maximum depth of binary tree - Easy
+ * https://leetcode.com/problems/maximum-depth-of-binary-tree/
+ *
+ * algos/leetcode/maximum-depth-of-binary-tree.js
+ */

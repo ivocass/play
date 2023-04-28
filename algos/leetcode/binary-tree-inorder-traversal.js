@@ -43,9 +43,7 @@ function levelOrder(root) {
   }
 
   const res = [];
-  const q = [];
-
-  q.push(root);
+  const q = [root];
 
   while (q.length > 0) {
     const node = q.shift();
