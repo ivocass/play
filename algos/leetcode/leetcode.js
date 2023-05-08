@@ -153,8 +153,15 @@
  */
 
 /**
- * 23 - 20230508 - Convert sorted array to Binary Search Tree
+ * 23 - 20230508 - Convert sorted array to Binary Search Tree - Easy
  * https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree
  *
  * algos/leetcode/convert-sorted-array-to-binary-search-tree.js
+ */
+
+/**
+ * 24 - 20230508 - Balanced binary tree - Easy
+ * https://leetcode.com/problems/balanced-binary-tree
+ *
+ * algos/leetcode/balanced-binary-tree.js
  */
