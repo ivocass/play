@@ -64,3 +64,53 @@ assert(isBalanced(toTree([3, 9, 20, null, null, 15, 7])), true);
 // assert(isBalanced(toTree([1, 2, 2, 3, null, null, 3, 4, null, null, 4])), false);
 
 // other solutions -----------------------------------------------------------------------
+
+// DFS O(N)
+
+var isBalanced = function (root) {
+  function DFS(node) {
+    if (!node) {
+      return 0;
+    }
+    const left = 1 + DFS(node.left);
+    const right = 1 + DFS(node.right);
+    const isSubTreeBalanced = Math.abs(left - right) <= 1;
+
+    return isSubTreeBalanced ? Math.max(left, right) : Infinity;
+  }
+
+  return DFS(root) !== Infinity;
+};
+
+// DFS O(N log N)
+var isBalanced = function (root) {
+  if (!root) return true;
+
+  let height = function (node) {
+    if (!node) return 0;
+    return 1 + Math.max(height(node.left), height(node.right));
+  };
+
+  return Math.abs(height(root.left) - height(root.right)) < 2 && isBalanced(root.left) && isBalanced(root.right);
+};
+
+var isBalanced = function (root) {
+  let result = true;
+  function dfs(node) {
+    if (!node) {
+      return 0;
+    }
+
+    const left = dfs(node.left);
+    const right = dfs(node.right);
+    if (Math.abs(left - right) > 1) {
+      result = false;
+    }
+
+    return Math.max(left, right) + 1;
+  }
+
+  dfs(root);
+
+  return result;
+};
