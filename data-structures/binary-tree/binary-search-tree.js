@@ -5,7 +5,10 @@ import { TreeNode } from './tree-node';
  */
 export class BinarySearchTree {
   #root = null;
-  constructor() {}
+  constructor() {
+    // see this.print()
+    this.printer;
+  }
 
   /**
    * @array: example [3, 9, 20, null, null, 15, 7]
@@ -53,6 +56,20 @@ export class BinarySearchTree {
     }
 
     return this.#root;
+  }
+
+  /**
+   * Expects this.printer to be set from outside.
+   * this.printer should be a function that receives the root and returns a string
+   * representing the tree.
+   */
+  print() {
+    if (!this.printer) {
+      throw new Error('Printer not set');
+    }
+
+    const output = this.printer(this.#root);
+    console.log(output);
   }
 
   /**
@@ -108,23 +125,23 @@ export class BinarySearchTree {
     this.#root = this.#removeNode(this.#root, data);
   }
 
-  #removeNode(node, key) {
+  #removeNode(node, data) {
     if (!node) {
       return null;
     }
 
-    if (key < node.data) {
-      node.left = this.#removeNode(node.left, key);
-      return node;
-    }
-
-    if (key > node.data) {
-      node.right = this.#removeNode(node.right, key);
-      return node;
-    }
-
     if (!node.left && !node.right) {
       return null;
+    }
+
+    if (data < node.data) {
+      node.left = this.#removeNode(node.left, data);
+      return node;
+    }
+
+    if (data > node.data) {
+      node.right = this.#removeNode(node.right, data);
+      return node;
     }
 
     if (!node.left) {
@@ -180,7 +197,7 @@ export class BinarySearchTree {
   }
 
   inOrderIterative(root) {
-    const res = [];
+    const output = [];
     const stack = [];
     let node = root;
 
@@ -190,12 +207,12 @@ export class BinarySearchTree {
         node = node.left;
       } else {
         node = stack.pop();
-        res.push(node.val);
+        output.push(node.data);
         node = node.right;
       }
     }
 
-    return res;
+    return output;
   }
 
   preOrder(prints = true) {
@@ -221,6 +238,8 @@ export class BinarySearchTree {
   }
 
   preOrderIterative(root) {
+    if (!root) root = this.#root;
+
     const output = [];
     const stack = [];
 
@@ -263,6 +282,65 @@ export class BinarySearchTree {
     }
 
     return _output;
+  }
+
+  postOrderIterative(root) {
+    if (!root) root = this.#root;
+
+    const output = [];
+    const stack = [];
+    let node = root;
+    let lastVisitedNode;
+
+    while (node || stack.length) {
+      if (node) {
+        stack.push(node);
+
+        node = node.left;
+      } else {
+        const topNode = stack.at(-1);
+
+        if (topNode.right && topNode.right !== lastVisitedNode) {
+          node = topNode.right;
+        } else {
+          output.push(topNode.data);
+
+          lastVisitedNode = stack.pop();
+        }
+      }
+    }
+
+    return output;
+  }
+
+  postOrderIterative2(root) {
+    if (!root) root = this.#root;
+
+    const output = [];
+    const stack1 = [root];
+    const stack2 = [];
+    let node;
+
+    while (stack1.length) {
+      node = stack1.pop();
+
+      stack2.push(node);
+
+      if (node.left) {
+        stack1.push(node.left);
+      }
+      if (node.right) {
+        stack1.push(node.right);
+      }
+    }
+
+    while (stack2.length) {
+      node = stack2.pop();
+
+      output.push(node.data);
+    }
+
+    return output;
   }
 
   levelOrder(prints, node) {
