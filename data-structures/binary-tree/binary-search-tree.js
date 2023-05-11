@@ -255,26 +255,24 @@ export class BinarySearchTree {
     return output;
   }
 
-  postOrder(prints = true, node = undefined, _output = [], _depth = -1) {
-    _depth++;
-
-    if (node === undefined) {
+  postOrder(prints = true, node = undefined) {
+    if (!node) {
       node = this.#root;
     }
+    const output = this.postOrderRecursive(node);
 
-    if (node === null) {
-      return _output;
-    }
+    return this.#handleOutput(output, prints);
+  }
 
-    this.postOrder(prints, node.left, _output, _depth);
-    this.postOrder(prints, node.right, _output, _depth);
-    _output.push(node.data);
+  postOrderRecursive(node = undefined, output = []) {
+    if (node === undefined) node = this.#root;
+    if (node === null) return output;
 
-    if (_depth === 0) {
-      return this.#handleOutput(_output, prints);
-    }
+    this.postOrderRecursive(node.left, output);
+    this.postOrderRecursive(node.right, output);
+    output.push(node.data);
 
-    return _output;
+    return output;
   }
 
   postOrderIterative(root) {
@@ -337,10 +335,10 @@ export class BinarySearchTree {
   }
 
   levelOrder(prints, node) {
-    return this.levelOrderIterative(prints, node);
+    return this.levelOrderIterative(node);
   }
 
-  levelOrderIterative(prints = true, node = undefined) {
+  levelOrderIterative(node) {
     if (node === undefined) {
       node = this.#root;
     }
@@ -361,10 +359,10 @@ export class BinarySearchTree {
       node.right && q.push(node.right);
     }
 
-    return this.#handleOutput(output, prints);
+    return output;
   }
 
-  levelOrderRecursive(prints = true) {
+  levelOrderRecursive() {
     const output = [];
     const height = this.height;
 
@@ -385,7 +383,7 @@ export class BinarySearchTree {
       process(this.#root, i);
     }
 
-    return this.#handleOutput(output, prints);
+    return output;
   }
 
   #handleOutput(output, prints) {
