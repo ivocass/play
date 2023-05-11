@@ -158,29 +158,25 @@ export class BinarySearchTree {
   }
 
   inOrder(prints = true) {
-    return inOrderRecursive(prints);
+    const output = this.inOrderRecursive();
+
+    return this.#handleOutput(output, prints);
   }
 
-  inOrderRecursive(prints = true, node = undefined, _output = [], _depth = -1) {
-    _depth++;
-
+  inOrderRecursive(node = undefined, output = []) {
     if (node === undefined) {
       node = this.#root;
     }
 
     if (node === null) {
-      return _output;
+      return output;
     }
 
-    this.inOrder(prints, node.left, _output, _depth);
-    _output.push(node.data);
-    this.inOrder(prints, node.right, _output, _depth);
+    this.inOrderRecursive(node.left, output);
+    output.push(node.data);
+    this.inOrderRecursive(node.right, output);
 
-    if (_depth === 0) {
-      return this.#handleOutput(_output, prints);
-    }
-
-    return _output;
+    return output;
   }
 
   inOrderIterative(root) {
@@ -202,26 +198,49 @@ export class BinarySearchTree {
     return res;
   }
 
-  preOrder(prints = true, node = undefined, _output = [], _depth = -1) {
-    _depth++;
+  preOrder(prints = true) {
+    const output = this.preOrderRecursive();
 
+    return this.#handleOutput(output, prints);
+  }
+
+  preOrderRecursive(node = undefined, output = []) {
     if (node === undefined) {
       node = this.#root;
     }
 
     if (node === null) {
-      return _output;
+      return output;
     }
 
-    _output.push(node.data);
-    this.preOrder(prints, node.left, _output, _depth);
-    this.preOrder(prints, node.right, _output, _depth);
+    output.push(node.data);
+    this.preOrderRecursive(node.left, output);
+    this.preOrderRecursive(node.right, output);
 
-    if (_depth === 0) {
-      return this.#handleOutput(_output, prints);
+    return output;
+  }
+
+  preOrderIterative(root) {
+    const output = [];
+    const stack = [];
+
+    let node = root;
+
+    while (node || stack.length) {
+      if (!node) {
+        node = stack.pop();
+      }
+
+      output.push(node.data);
+
+      if (node.right) {
+        stack.push(node.right);
+      }
+
+      node = node.left;
     }
 
-    return _output;
+    return output;
   }
 
   postOrder(prints = true, node = undefined, _output = [], _depth = -1) {
