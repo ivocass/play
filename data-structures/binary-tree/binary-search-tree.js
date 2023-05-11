@@ -241,22 +241,15 @@ export class BinarySearchTree {
     if (!root) root = this.#root;
 
     const output = [];
-    const stack = [];
+    const stack = [root];
 
-    let node = root;
-
-    while (node || stack.length) {
-      if (!node) {
-        node = stack.pop();
-      }
+    while (stack.length) {
+      const node = stack.pop();
 
       output.push(node.data);
 
-      if (node.right) {
-        stack.push(node.right);
-      }
-
-      node = node.left;
+      node.right && stack.push(node.right);
+      node.left && stack.push(node.left);
     }
 
     return output;
@@ -344,7 +337,7 @@ export class BinarySearchTree {
   }
 
   levelOrder(prints, node) {
-    return levelOrderIterative(prints, node);
+    return this.levelOrderIterative(prints, node);
   }
 
   levelOrderIterative(prints = true, node = undefined) {
