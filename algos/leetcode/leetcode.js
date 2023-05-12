@@ -165,3 +165,10 @@
  *
  * algos/leetcode/balanced-binary-tree.js
  */
+
+/**
+ * 25 - 20230512 - Minimum depth of binary tree - Easy
+ * https://leetcode.com/problems/minimum-depth-of-binary-tree
+ *
+ * algos/leetcode/minimum-depth-of-binary-tree.js
+ */
