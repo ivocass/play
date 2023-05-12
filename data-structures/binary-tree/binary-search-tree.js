@@ -170,6 +170,7 @@ export class BinarySearchTree {
     return node;
   }
 
+  // doesnt work with unsorted trees
   findMinNode(node) {
     if (!node.left) {
       return node;
@@ -178,13 +179,7 @@ export class BinarySearchTree {
     return this.findMinNode(node.left);
   }
 
-  sum(node) {
-    if (node === undefined) node = this.#root;
-    if (node === null) return 0;
-
-    return node.data + this.sum(node.left) + this.sum(node.right);
-  }
-
+  // works with unsorted trees
   minValue(node) {
     if (node === undefined) node = this.#root;
     if (!node) return Infinity;
@@ -193,6 +188,13 @@ export class BinarySearchTree {
     const minRight = this.minValue(node.right);
 
     return Math.min(node.data, minLeft, minRight);
+  }
+
+  sum(node) {
+    if (node === undefined) node = this.#root;
+    if (node === null) return 0;
+
+    return node.data + this.sum(node.left) + this.sum(node.right);
   }
 
   /**
@@ -371,8 +373,10 @@ export class BinarySearchTree {
     return output;
   }
 
-  levelOrder(prints, node) {
-    return this.levelOrderIterative(node);
+  levelOrder(prints = true, node) {
+    const output = this.levelOrderIterative(node);
+
+    return this.#handleOutput(output, prints);
   }
 
   levelOrderIterative(node) {
@@ -385,15 +389,15 @@ export class BinarySearchTree {
     }
 
     const output = [];
-    const q = [node];
+    const queue = [node];
 
-    while (q.length > 0) {
-      node = q.shift();
+    while (queue.length > 0) {
+      node = queue.shift();
 
       output.push(node.data);
 
-      node.left && q.push(node.left);
-      node.right && q.push(node.right);
+      node.left && queue.push(node.left);
+      node.right && queue.push(node.right);
     }
 
     return output;

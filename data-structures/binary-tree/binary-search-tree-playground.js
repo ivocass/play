@@ -8,7 +8,7 @@ const values2 = [1, 2, 2, 3, null, null, 3, 4, null, null, 4];
 var bst = new BinarySearchTree();
 bst.printer = printTree;
 
-bst.fromArray(values1, true);
+bst.fromArray(values0);
 
 // console.log('tree', bst.root);
 
