@@ -172,3 +172,10 @@
  *
  * algos/leetcode/minimum-depth-of-binary-tree.js
  */
+
+/**
+ * 26 - 20230512 - Path sum - Easy
+ * https://leetcode.com/problems/path-sum/
+ *
+ * algos/leetcode/path-sum.js
+ */
