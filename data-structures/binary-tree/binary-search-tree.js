@@ -168,7 +168,22 @@ export class BinarySearchTree {
     return this.findMinNode(node.left);
   }
 
-  search(value) {}
+  sum(node) {
+    if (node === undefined) node = this.#root;
+    if (node === null) return 0;
+
+    return node.data + this.sum(node.left) + this.sum(node.right);
+  }
+
+  minValue(node) {
+    if (node === undefined) node = this.#root;
+    if (!node) return Infinity;
+
+    const minLeft = this.minValue(node.left);
+    const minRight = this.minValue(node.right);
+
+    return Math.min(node.data, minLeft, minRight);
+  }
 
   get root() {
     return this.#root;
@@ -412,6 +427,13 @@ export class BinarySearchTree {
     }
 
     return node;
+  }
+
+  includes(node, data) {
+    if (!node) return false;
+    if (node.data === data) return true;
+
+    return includes(node.left) || includes(node.right);
   }
 
   get height() {
