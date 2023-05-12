@@ -17,6 +17,10 @@ export class BinarySearchTree {
    */
   fromArray(array, sorts = false) {
     if (sorts) {
+      if (array.includes(null)) {
+        throw new Error('Null values cant be sorted');
+      }
+
       array.forEach((val) => {
         this.insert(val);
       });
@@ -29,6 +33,10 @@ export class BinarySearchTree {
     return this.createTreeIterative(array);
   }
 
+  /**
+   * Useful for arrays in the LeetCode format (which contain null values).
+   * Eg [1, 2, 2, 3, null, null, 3, 4, null, null, 4]
+   */
   createTreeIterative(array) {
     this.#root = new TreeNode(array[0]);
     const q = [this.#root];
@@ -59,20 +67,6 @@ export class BinarySearchTree {
   }
 
   /**
-   * Expects this.printer to be set from outside.
-   * this.printer should be a function that receives the root and returns a string
-   * representing the tree.
-   */
-  print() {
-    if (!this.printer) {
-      throw new Error('Printer not set');
-    }
-
-    const output = this.printer(this.#root);
-    console.log(output);
-  }
-
-  /**
    * Not using this one, as it doesn't get along with LeetCode's arrays.
    * The way it sets the indices doesn't account for the missing children of null nodes,
    * so for certain cases the indices are out of bounds.
@@ -93,6 +87,19 @@ export class BinarySearchTree {
     }
 
     return buildTree(0);
+  }
+
+  /**
+   * Expects this.printer to be set from outside.
+   * this.printer should be a function that receives the root and returns a string
+   * representing the tree.
+   */
+  print() {
+    if (!this.printer) {
+      throw new Error('Printer not set');
+    }
+
+    console.log(this.printer(this.#root));
   }
 
   insert(data) {
@@ -125,6 +132,9 @@ export class BinarySearchTree {
     this.#root = this.#removeNode(this.#root, data);
   }
 
+  /**
+   * Only works if the tree's values are sorted.
+   */
   #removeNode(node, data) {
     if (!node) {
       return null;
@@ -153,10 +163,10 @@ export class BinarySearchTree {
     }
 
     // Deleting node with two children
-    const temp = this.findMinNode(node.right);
-    node.data = temp.data;
+    const nodeToRemove = this.findMinNode(node.right);
+    node.data = nodeToRemove.data;
 
-    node.right = this.#removeNode(node.right, temp.data);
+    node.right = this.#removeNode(node.right, nodeToRemove.data);
     return node;
   }
 
@@ -183,6 +193,18 @@ export class BinarySearchTree {
     const minRight = this.minValue(node.right);
 
     return Math.min(node.data, minLeft, minRight);
+  }
+
+  /**
+   * Returns the sum of the path (from root to leaf) with the highest values.
+   */
+  maxPathSum(node) {
+    if (!node) return -Infinity;
+    if (!node.left && !node.right) return node.data;
+
+    const maxSubSum = Math.max(this.maxPathSum(node.left), this.maxPathSum(node.right));
+
+    return node.data + maxSubSum;
   }
 
   get root() {
