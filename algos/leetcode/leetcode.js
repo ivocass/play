@@ -186,3 +186,10 @@
  *
  * algos/leetcode/pascals-triangle.js
  */
+
+/**
+ * 28 - 20230515 - Pascal's triangle 2 - Easy
+ * https://leetcode.com/problems/pascals-triangle-ii
+ *
+ * algos/leetcode/pascals-triangle-2.js
+ */
