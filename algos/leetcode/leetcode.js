@@ -179,3 +179,10 @@
  *
  * algos/leetcode/path-sum.js
  */
+
+/**
+ * 27 - 20230515 - Pascal's triangle - Easy
+ * https://leetcode.com/problems/pascals-triangle
+ *
+ * algos/leetcode/pascals-triangle.js
+ */
