@@ -193,3 +193,10 @@
  *
  * algos/leetcode/pascals-triangle-2.js
  */
+
+/**
+ * 29 - 20230515 - 121 - Best Time to Buy and Sell Stock - Easy
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+ *
+ * algos/leetcode/best-time-to-buy-and-sell-stock.js
+ */
