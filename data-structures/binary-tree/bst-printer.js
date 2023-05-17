@@ -15,7 +15,7 @@ function buildAsciiTree(t) {
     edgeLength: 0,
     height: 0,
     parentDir: 0,
-    label: String(t.data),
+    label: String(t.val),
   };
   if (node.left) {
     node.left.parentDir = -1;

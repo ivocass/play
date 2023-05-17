@@ -102,8 +102,8 @@ export class BinarySearchTree {
     console.log(this.printer(this.#root));
   }
 
-  insert(data) {
-    const newNode = new TreeNode(data);
+  insert(val) {
+    const newNode = new TreeNode(val);
 
     if (!this.#root) {
       this.#root = newNode;
@@ -113,7 +113,7 @@ export class BinarySearchTree {
   }
 
   #insertNode(node, newNode) {
-    if (newNode.data < node.data) {
+    if (newNode.val < node.val) {
       if (!node.left) {
         node.left = newNode;
       } else {
@@ -128,14 +128,14 @@ export class BinarySearchTree {
     }
   }
 
-  remove(data) {
-    this.#root = this.#removeNode(this.#root, data);
+  remove(val) {
+    this.#root = this.#removeNode(this.#root, val);
   }
 
   /**
    * Only works if the tree's values are sorted.
    */
-  #removeNode(node, data) {
+  #removeNode(node, val) {
     if (!node) {
       return null;
     }
@@ -144,13 +144,13 @@ export class BinarySearchTree {
       return null;
     }
 
-    if (data < node.data) {
-      node.left = this.#removeNode(node.left, data);
+    if (val < node.val) {
+      node.left = this.#removeNode(node.left, val);
       return node;
     }
 
-    if (data > node.data) {
-      node.right = this.#removeNode(node.right, data);
+    if (val > node.val) {
+      node.right = this.#removeNode(node.right, val);
       return node;
     }
 
@@ -164,9 +164,9 @@ export class BinarySearchTree {
 
     // Deleting node with two children
     const nodeToRemove = this.findMinNode(node.right);
-    node.data = nodeToRemove.data;
+    node.val = nodeToRemove.val;
 
-    node.right = this.#removeNode(node.right, nodeToRemove.data);
+    node.right = this.#removeNode(node.right, nodeToRemove.val);
     return node;
   }
 
@@ -187,14 +187,14 @@ export class BinarySearchTree {
     const minLeft = this.minValue(node.left);
     const minRight = this.minValue(node.right);
 
-    return Math.min(node.data, minLeft, minRight);
+    return Math.min(node.val, minLeft, minRight);
   }
 
   sum(node) {
     if (node === undefined) node = this.#root;
     if (node === null) return 0;
 
-    return node.data + this.sum(node.left) + this.sum(node.right);
+    return node.val + this.sum(node.left) + this.sum(node.right);
   }
 
   /**
@@ -202,11 +202,11 @@ export class BinarySearchTree {
    */
   maxPathSum(node) {
     if (!node) return -Infinity;
-    if (!node.left && !node.right) return node.data;
+    if (!node.left && !node.right) return node.val;
 
     const maxSubSum = Math.max(this.maxPathSum(node.left), this.maxPathSum(node.right));
 
-    return node.data + maxSubSum;
+    return node.val + maxSubSum;
   }
 
   get root() {
@@ -229,7 +229,7 @@ export class BinarySearchTree {
     }
 
     this.inOrderRecursive(node.left, output);
-    output.push(node.data);
+    output.push(node.val);
     this.inOrderRecursive(node.right, output);
 
     return output;
@@ -246,7 +246,7 @@ export class BinarySearchTree {
         node = node.left;
       } else {
         node = stack.pop();
-        output.push(node.data);
+        output.push(node.val);
         node = node.right;
       }
     }
@@ -269,7 +269,7 @@ export class BinarySearchTree {
       return output;
     }
 
-    output.push(node.data);
+    output.push(node.val);
     this.preOrderRecursive(node.left, output);
     this.preOrderRecursive(node.right, output);
 
@@ -285,7 +285,7 @@ export class BinarySearchTree {
     while (stack.length) {
       const node = stack.pop();
 
-      output.push(node.data);
+      output.push(node.val);
 
       node.right && stack.push(node.right);
       node.left && stack.push(node.left);
@@ -309,7 +309,7 @@ export class BinarySearchTree {
 
     this.postOrderRecursive(node.left, output);
     this.postOrderRecursive(node.right, output);
-    output.push(node.data);
+    output.push(node.val);
 
     return output;
   }
@@ -333,7 +333,7 @@ export class BinarySearchTree {
         if (topNode.right && topNode.right !== lastVisitedNode) {
           node = topNode.right;
         } else {
-          output.push(topNode.data);
+          output.push(topNode.val);
 
           lastVisitedNode = stack.pop();
         }
@@ -367,7 +367,7 @@ export class BinarySearchTree {
     while (stack2.length) {
       node = stack2.pop();
 
-      output.push(node.data);
+      output.push(node.val);
     }
 
     return output;
@@ -394,7 +394,7 @@ export class BinarySearchTree {
     while (queue.length > 0) {
       node = queue.shift();
 
-      output.push(node.data);
+      output.push(node.val);
 
       node.left && queue.push(node.left);
       node.right && queue.push(node.right);
@@ -413,7 +413,7 @@ export class BinarySearchTree {
       }
 
       if (level === 0) {
-        output.push(node.data);
+        output.push(node.val);
       } else if (level > 0) {
         process(node.left, level - 1);
         process(node.right, level - 1);
@@ -435,7 +435,7 @@ export class BinarySearchTree {
     return output;
   }
 
-  search(data, node) {
+  search(val, node) {
     if (node === undefined) {
       node = this.#root;
     }
@@ -444,20 +444,20 @@ export class BinarySearchTree {
       return null;
     }
 
-    if (data < node.data) {
-      return this.search(data, node.left);
+    if (val < node.val) {
+      return this.search(val, node.left);
     }
 
-    if (data > node.data) {
-      return this.search(data, node.right);
+    if (val > node.val) {
+      return this.search(val, node.right);
     }
 
     return node;
   }
 
-  includes(node, data) {
+  includes(node, val) {
     if (!node) return false;
-    if (node.data === data) return true;
+    if (node.val === val) return true;
 
     return includes(node.left) || includes(node.right);
   }
