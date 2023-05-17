@@ -207,3 +207,10 @@
  *
  * algos/leetcode/valid-palindrome.js
  */
+
+/**
+ * 31 - 20230517 136 - Single number - Easy
+ * https://leetcode.com/problems/single-number/
+ *
+ * algos/leetcode/single-number.js
+ */
