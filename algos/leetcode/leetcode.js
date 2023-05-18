@@ -237,8 +237,15 @@
  */
 
 /**
- * 35 - 20230518 -  - Excel sheet column - Easy
+ * 35 - 20230518 - 168 - Excel sheet column - Easy
  * https://leetcode.com/problems/excel-sheet-column-title/
  *
  * algos/leetcode/excel-sheet-column.js
+ */
+
+/**
+ * 36 - 20230518 - 169 - Majority element - Easy
+ * https://leetcode.com/problems/majority-element
+ *
+ * algos/leetcode/majority-element.js
  */
