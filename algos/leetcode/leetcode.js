@@ -235,3 +235,10 @@
  *
  * algos/leetcode/intersection-of-two-linked-lists.js
  */
+
+/**
+ * 35 - 20230518 -  - Excel sheet column - Easy
+ * https://leetcode.com/problems/excel-sheet-column-title/
+ *
+ * algos/leetcode/excel-sheet-column.js
+ */
