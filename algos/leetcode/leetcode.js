@@ -249,3 +249,10 @@
  *
  * algos/leetcode/majority-element.js
  */
+
+/**
+ * 37 - 20230518 - 171 - Excel sheet column number - Easy
+ * https://leetcode.com/problems/excel-sheet-column-number/
+ *
+ * algos/leetcode/excel-sheet-column-number.js
+ */
