@@ -298,3 +298,10 @@
  *
  * algos/leetcode/promise-time-limit.js
  */
+
+/**
+ * 44 - 20230522 - 2648 - Generate fibonacci sequence - Easy
+ * https://leetcode.com/problems/generate-fibonacci-sequence
+ *
+ * algos/leetcode/generate-fibonacci-sequence.js
+ */
