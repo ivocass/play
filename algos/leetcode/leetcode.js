@@ -277,3 +277,10 @@
  *
  * algos/leetcode/array-prototype-last.js
  */
+
+/**
+ * 50 - 20230522 - 2621 - Sleep - Easy
+ * https://leetcode.com/problems/sleep
+ *
+ * algos/leetcode/sleep.js
+ */
