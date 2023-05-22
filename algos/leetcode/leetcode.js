@@ -279,8 +279,15 @@
  */
 
 /**
- * 50 - 20230522 - 2621 - Sleep - Easy
+ * 41 - 20230522 - 2621 - Sleep - Easy
  * https://leetcode.com/problems/sleep
  *
  * algos/leetcode/sleep.js
+ */
+
+/**
+ * 42 - 20230522 -  - Filter elements from array - Easy
+ * https://leetcode.com/problems/filter-elements-from-array
+ *
+ * algos/leetcode/leetcode.js
  */
