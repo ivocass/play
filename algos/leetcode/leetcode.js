@@ -270,3 +270,10 @@
  *
  * algos/leetcode/number-of-1-bits.js
  */
+
+/**
+ * 40 - 20230522 - 2619 - Array prototype last - Easy
+ * https://leetcode.com/problems/array-prototype-last/
+ *
+ * algos/leetcode/array-prototype-last.js
+ */
