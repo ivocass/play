@@ -256,3 +256,10 @@
  *
  * algos/leetcode/excel-sheet-column-number.js
  */
+
+/**
+ * 38 - 20230522 - 190 - Reverse bits - Easy
+ * https://leetcode.com/problems/reverse-bits/
+ *
+ * algos/leetcode/reverse-bits.js
+ */
