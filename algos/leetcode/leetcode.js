@@ -263,3 +263,10 @@
  *
  * algos/leetcode/reverse-bits.js
  */
+
+/**
+ * 39 - 20230522 - 191 - Number of 1 bits - Easy
+ * https://leetcode.com/problems/number-of-1-bits
+ *
+ * algos/leetcode/number-of-1-bits.js
+ */
